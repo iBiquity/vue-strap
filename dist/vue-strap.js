@@ -6185,7 +6185,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = {
 	  props: {
 	    type: { type: String, default: 'default' },
-	    placement: { type: String, default: '' }
+	    placement: { type: String, default: '' },
+	    fluid: { type: Boolean, default: true }
 	  },
 	  data: function data() {
 	    return {
@@ -6296,7 +6297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return _c('nav', {
 	    class: ['navbar', 'navbar-' + _vm.type, _vm.placement === 'static' ? 'navbar-static-top' : 'navbar-fixed-' + _vm.placement]
 	  }, [_c('div', {
-	    staticClass: "container-fluid"
+	    class: _vm.fluid ? 'container-fluid' : 'container'
 	  }, [_c('div', {
 	    staticClass: "navbar-header"
 	  }, [(!_vm.$slots.collapse) ? _c('button', {
