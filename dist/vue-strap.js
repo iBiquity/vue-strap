@@ -6228,6 +6228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }).onBlur(function (e) {
 	          $dropdown.each(function (content) {
 	            if (!content.contains(e.target)) content.classList.remove('open');
+	            _this.$emit('collapse');
 	          });
 	        });
 	      }
@@ -6237,11 +6238,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    (0, _NodeList2.default)(this.$el).on('click touchstart', 'li:not(.dropdown)>a', function (e) {
 	      setTimeout(function () {
-	        _this.collapsed = true;
+	        _this.collapsed = true;_this.$emit('collapse');
 	      }, 200);
 	    }).onBlur(function (e) {
 	      if (!_this.$el.contains(e.target)) {
-	        _this.collapsed = true;
+	        _this.collapsed = true;_this.$emit('collapse');
 	      }
 	    });
 	    var height = this.$el.offsetHeight;
