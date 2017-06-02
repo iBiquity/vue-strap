@@ -74,6 +74,7 @@ export default {
           $dropdown.each(content => {
             if (!content.contains(e.target)) 
               content.classList.remove('open')
+              this.$emit('collapse')
           })
         })
       }
@@ -82,9 +83,9 @@ export default {
     }
 
     $(this.$el).on('click touchstart','li:not(.dropdown)>a', e => {
-      setTimeout(() => { this.collapsed = true }, 200)
+      setTimeout(() => { this.collapsed = true; this.$emit('collapse'); }, 200)
     }).onBlur(e => {
-      if (!this.$el.contains(e.target)) { this.collapsed = true }
+      if (!this.$el.contains(e.target)) { this.collapsed = true; this.$emit('collapse'); }
     })
     let height = this.$el.offsetHeight
     if (this.placement === 'top') {
@@ -93,7 +94,7 @@ export default {
     if (this.placement === 'bottom') {
       document.body.style.paddingBottom = height + 'px'
     }
-    if (this.$slots.collapse) 
+    if (this.$slots.collapse)
       $('[data-toggle="collapse"]',this.$el).on('click', e => this.toggleCollapse(e))
   },
   beforeDestroy () {
